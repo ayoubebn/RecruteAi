@@ -1,0 +1,13 @@
+<h2>Candidate Dashboard</h2>
+<h3>Available Jobs</h3>
+<ul>
+    {% for job in jobs %}
+    <li>
+        {{ job[1] }} - {{ job[2] }}
+        <form method="POST">
+            <input type="hidden" name="job_id" value="{{ job[0] }}">
+            <button type="submit">Apply</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
