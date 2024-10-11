@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postuler à une Offre</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Postuler à l'offre : {{ job_offer.title }}</h1>
+    <p>{{ job_offer.description }}</p>
+
+    <form action="{{ url_for('apply_to_job', job_offer_id=job_offer.id) }}" method="POST" enctype="multipart/form-data">
+        <label for="fullname">Nom Complet :</label><br>
+        <input type="text" id="fullname" name="fullname" required><br><br>
+
+        <label for="email">Email :</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="phone">Numéro de Téléphone :</label><br>
+        <input type="text" id="phone" name="phone" required><br><br>
+
+        <label for="skills">Compétences :</label><br>
+        <textarea id="skills" name="skills" rows="4" required></textarea><br><br>
+
+        <label for="cv">Télécharger votre CV :</label><br>
+        <input type="file" id="cv" name="cv" required><br><br>
+
+        <button type="submit">Soumettre Candidature</button>
+    </form>
+</body>
+</html>

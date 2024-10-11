@@ -48,12 +48,13 @@ def add_user(username, password, user_type):
     conn.close()
 
 def check_user(username, user_type):
-    conn = connect_db()
+    conn = sqlite3.connect('app.db')
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM users WHERE username=? AND user_type=?', (username, user_type))
+    cursor.execute('SELECT * FROM users WHERE username = ? AND user_type = ?', (username, user_type))
     user = cursor.fetchone()
     conn.close()
     return user
+
 
 def get_jobs(recruiter_username=None):
     conn = connect_db()

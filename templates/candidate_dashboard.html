@@ -13,7 +13,7 @@
             <h3>{{ offer[1] }}</h3> <!-- Title -->
             <p>{{ offer[2] }}</p> <!-- Description -->
             <p><strong>Skills Required:</strong> {{ offer[3] }}</p> <!-- Skills Required -->
-            <a href="{{ url_for('candidate.apply', job_offer_id=offer[0]) }}">Apply</a>
+            <a href="{{ url_for('apply_to_job', job_offer_id=offer[0]) }}">Apply</a>
         </li>
         {% endfor %}
     </ul>

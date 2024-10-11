@@ -3,18 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Job Offer</title>
+    <title>Créer une Offre d'Emploi</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h2>Create a Job Offer</h2>
-    <form method="POST">
-        <label for="title">Job Title</label>
-        <input type="text" name="title" required><br>
-        <label for="description">Description</label>
-        <textarea name="description" required></textarea><br>
-        <label for="skills_required">Skills Required</label>
-        <input type="text" name="skills_required" required><br>
-        <button type="submit">Create Offer</button>
+    <h1>Créer une Nouvelle Offre d'Emploi</h1>
+
+    <form action="{{ url_for('create_offer_route') }}" method="POST">
+        <label for="title">Titre de l'Offre :</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="description">Description :</label><br>
+        <textarea id="description" name="description" rows="6" required></textarea><br><br>
+
+        <label for="required_skills">Compétences Requises :</label><br>
+        <textarea id="required_skills" name="required_skills" rows="4" required></textarea><br><br>
+
+        <button type="submit">Créer Offre</button>
     </form>
 </body>
 </html>

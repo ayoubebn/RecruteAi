@@ -36,5 +36,13 @@ def candidate_dashboard_route():
 def recruiter_dashboard_route():
     return recruiter_dashboard()
 
+@app.route('/candidate/apply/<int:job_offer_id>', methods=['GET', 'POST'])
+def apply_to_job(job_offer_id):
+    return apply(job_offer_id)
+
+@app.route('/recruiter/create_offer', methods=['GET', 'POST'])
+def create_offer_route():
+    return create_offer()
+
 if __name__ == '__main__':
     app.run(debug=True)
