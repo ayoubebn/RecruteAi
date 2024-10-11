@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Job</title>
+</head>
+<body>
+    <h2>Apply for Job #{{ job_offer_id }}</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="cv">Upload CV</label>
+        <input type="file" name="cv" required><br>
+        <button type="submit">Submit Application</button>
+    </form>
+</body>
+</html>

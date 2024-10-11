@@ -73,10 +73,11 @@ def add_job(title, description, recruiter_username):
     conn.commit()
     conn.close()
 
-def add_application(candidate_username, job_id):
-    conn = connect_db()
+def add_application(candidate_id, job_offer_id, cv_path):
+    conn = sqlite3.connect('app.db')
     cursor = conn.cursor()
-    cursor.execute('INSERT INTO applications (candidate_username, job_id) VALUES (?, ?)', (candidate_username, job_id))
+    cursor.execute('INSERT INTO applications (candidate_id, job_offer_id, cv_path) VALUES (?, ?, ?)', 
+                   (candidate_id, job_offer_id, cv_path))
     conn.commit()
     conn.close()
 
@@ -92,3 +93,38 @@ def get_applications(recruiter_username):
     applications = cursor.fetchall()
     conn.close()
     return applications
+
+def add_user(username, password, user_type):
+    conn = sqlite3.connect('app.db')
+    cursor = conn.cursor()
+
+    # Change 'password' to 'hashed_password' to match the database schema
+    cursor.execute('INSERT INTO users (username, hashed_password, user_type) VALUES (?, ?, ?)', 
+                   (username, password, user_type))
+
+    conn.commit()
+    conn.close()
+
+def add_job_offer(title, description, skills_required, recruiter_id):
+    conn = sqlite3.connect('app.db')
+    cursor = conn.cursor()
+    cursor.execute('INSERT INTO job_offers (title, description, skills_required, recruiter_id) VALUES (?, ?, ?, ?)', 
+                   (title, description, skills_required, recruiter_id))
+    conn.commit()
+    conn.close()
+
+def get_job_offers_by_recruiter(recruiter_username):
+    conn = sqlite3.connect('app.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM job_offers WHERE recruiter_id = (SELECT id FROM users WHERE username = ?)', (recruiter_username,))
+    job_offers = cursor.fetchall()
+    conn.close()
+    return job_offers
+
+def get_all_job_offers():
+    conn = sqlite3.connect('app.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM job_offers')
+    job_offers = cursor.fetchall()
+    conn.close()
+    return job_offers

@@ -1,13 +1,21 @@
-<h2>Candidate Dashboard</h2>
-<h3>Available Jobs</h3>
-<ul>
-    {% for job in jobs %}
-    <li>
-        {{ job[1] }} - {{ job[2] }}
-        <form method="POST">
-            <input type="hidden" name="job_id" value="{{ job[0] }}">
-            <button type="submit">Apply</button>
-        </form>
-    </li>
-    {% endfor %}
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Offers</title>
+</head>
+<body>
+    <h2>Available Job Offers</h2>
+    <ul>
+        {% for offer in job_offers %}
+        <li>
+            <h3>{{ offer[1] }}</h3> <!-- Title -->
+            <p>{{ offer[2] }}</p> <!-- Description -->
+            <p><strong>Skills Required:</strong> {{ offer[3] }}</p> <!-- Skills Required -->
+            <a href="{{ url_for('candidate.apply', job_offer_id=offer[0]) }}">Apply</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
