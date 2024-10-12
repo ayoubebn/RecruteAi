@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for, session
-from db import add_user, check_user ,get_job_offer_by_id, add_application
-from utils import hash_password, verify_password , save_cv
+from db import add_user, check_user, get_job_offer_by_id, add_application, add_job
+from utils import hash_password, verify_password, save_cv
 
 def candidate_login():
     if request.method == 'POST':
@@ -96,7 +96,7 @@ def create_offer():
         required_skills = request.form['required_skills']
 
         # Ajouter l'offre d'emploi à la base de données
-        add_job_offer(session['username'], title, description, required_skills)
+        add_job(session['username'], title, description, required_skills)
 
         return redirect(url_for('recruiter_dashboard_route'))
 
