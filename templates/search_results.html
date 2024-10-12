@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Search Results</h1>
+    <ul>
+        {% for offer in job_offers %}
+        <li>
+            <h3>{{ offer }}</h3> <!-- Title -->
+            <p>{{ offer }}</p> <!-- Description -->
+            <a href="{{ url_for('apply_to_job', job_offer_id=offer) }}">Apply</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

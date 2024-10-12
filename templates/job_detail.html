@@ -1,12 +1,18 @@
-<h2>Job Detail: {{ job.title }}</h2>
-<p>{{ job.description }}</p>
-
-<h3>Apply for this job</h3>
-<form method="POST" enctype="multipart/form-data">
-    <input type="text" name="name" placeholder="Your Name" required><br>
-    <input type="text" name="surname" placeholder="Your Surname" required><br>
-    <input type="email" name="email" placeholder="Your Email" required><br>
-    <input type="tel" name="phone" placeholder="Your Phone" required><br>
-    <input type="file" name="cv" accept=".pdf,.docx" required><br>
-    <button type="submit">Submit Application</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome to the Job Application System</h1>
+    <nav>
+        <a href="/login/candidate">Candidate Login</a> | 
+        <a href="/login/recruiter">Recruiter Login</a> | 
+        <a href="/register/candidate">Candidate Register</a> | 
+        <a href="/register/recruiter">Recruiter Register</a>
+    </nav>
+</body>
+</html>

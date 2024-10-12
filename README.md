@@ -1,5 +1,4 @@
 
-
 /recru_app
 │
 ├── app.py
@@ -10,19 +9,28 @@
 ├── filters.py
 ├── utils.py
 ├── init_db.py
-├── recruiter.py
+├── profile.py
+├── search.py
+├── notifications.py
+├── dashboard.py
+├── requirements.txt
 ├── templates
 │   ├── candidate_dashboard.html
 │   ├── recruiter_dashboard.html
 │   ├── login.html
 │   ├── register.html
 │   ├── job_detail.html
-│   ├── apply_to_job.html
+│   ├── apply_to_job.html 
 │   ├── apply.html
-│   ├──create_offer.html
-│   └──home.html
+│   ├── create_offer.html
+│   ├── home.html
+│   ├── profile.html
+│   ├── search.html
+│   ├── search_results.html
+│   └── notifications.html
 └── static
     └── style.css
+
 
 
 

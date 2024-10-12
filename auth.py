@@ -22,7 +22,7 @@ def recruiter_login():
         password = request.form['password']
         user = check_user(username, 'recruiter')
 
-        if user and verify_password(password, user['password']):
+        if user and verify_password(password, user['hashed_password']):
             session['username'] = username
             session['user_type'] = 'recruiter'
             return redirect(url_for('recruiter_dashboard_route'))
@@ -30,10 +30,18 @@ def recruiter_login():
             return render_template('login.html', error="Invalid credentials")
     return render_template('login.html')
 
+
 def candidate_register():
     if request.method == 'POST':
         username = request.form['username']
         password = hash_password(request.form['password'])
+
+        # Vérifier si le nom d'utilisateur existe déjà
+        existing_user = check_user(username, 'candidate')
+        if existing_user:
+            return render_template('register.html', error="Username already exists")
+
+        # Si l'utilisateur n'existe pas, l'ajouter
         add_user(username, password, 'candidate')
         return redirect(url_for('login', user_type='candidate'))
     return render_template('register.html')
@@ -51,8 +59,8 @@ def recruiter_register():
         # Si l'utilisateur n'existe pas, l'ajouter
         add_user(username, password, 'recruiter')
         return redirect(url_for('login', user_type='recruiter'))
-
     return render_template('register.html')
+
 
 def apply(job_offer_id):
     if 'username' not in session or session['user_type'] != 'candidate':
