@@ -24,7 +24,7 @@
 │   ├── apply.html
 │   ├── create_offer.html
 │   ├── home.html
-│   ├── profile.html
+│   ├── user_profile.html
 │   ├── search.html
 │   ├── search_results.html
 │   └── notifications.html
