@@ -2,6 +2,7 @@ import hashlib
 import os
 from werkzeug.utils import secure_filename
 
+
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 

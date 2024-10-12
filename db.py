@@ -65,7 +65,6 @@ def check_user(username, user_type):
         return user_dict
     return None
 
-
 def get_jobs(recruiter_username=None):
     conn = connect_db()
     cursor = conn.cursor()

@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, session
-from auth import candidate_login, recruiter_login, candidate_register, recruiter_register
+from auth import candidate_login, recruiter_login, candidate_register, recruiter_register, apply, create_offer
 from candidate import candidate_dashboard
 from recruiter import recruiter_dashboard
 from db import init_db

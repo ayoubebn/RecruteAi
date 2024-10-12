@@ -22,4 +22,3 @@ def profile():
 
     user_profile = get_user_profile(session['username'])
     return render_template('profile.html', profile=user_profile)
-
