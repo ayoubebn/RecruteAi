@@ -2,6 +2,9 @@ from flask import render_template, request, redirect, url_for, session
 from db import add_user, check_user, get_job_offer_by_id, add_application, add_job
 from utils import hash_password, verify_password, save_cv
 import logging
+from candidate import candidate_dashboard
+from recruiter import recruiter_dashboard   
+
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -15,9 +18,12 @@ def candidate_login():
         logging.debug(f"Password: {password}")
 
         if user and verify_password(password, user['hashed_password']):
+
+
             session['username'] = username
             session['user_type'] = 'candidate'
-            return redirect(url_for('candidate_dashboard_route'))
+            return redirect(url_for('candidate.candidate_dashboard')) 
+    
         else:
             return render_template('login.html', error="Invalid credentials")
     return render_template('login.html')
@@ -32,9 +38,10 @@ def recruiter_login():
         logging.debug(f"Password: {password}")
 
         if user and verify_password(password, user['hashed_password']):
+
             session['username'] = username
             session['user_type'] = 'recruiter'
-            return redirect(url_for('recruiter_dashboard_route'))
+            return redirect(url_for('recruiter.recruiter_dashboard'))
         else:
             return render_template('login.html', error="Invalid credentials")
     return render_template('login.html')

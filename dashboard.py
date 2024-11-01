@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, session, redirect, url_for
 from db import get_candidate_dashboard_data, get_recruiter_dashboard_data
+from auth import login
+
 
 dashboard_bp = Blueprint('dashboard', __name__)
 

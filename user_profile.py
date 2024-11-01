@@ -9,7 +9,6 @@ def profile():
         return redirect(url_for('login'))
 
     if request.method == 'POST':
-        # Update user profile logic
         profile_data = {
             'fullname': request.form['fullname'],
             'email': request.form['email'],
@@ -18,7 +17,7 @@ def profile():
             'experience': request.form['experience']
         }
         update_user_profile(session['username'], profile_data)
-        return redirect(url_for('profile'))
+        return redirect(url_for('profile.profile'))
 
     user_profile = get_user_profile(session['username'])
     return render_template('profile.html', profile=user_profile)
